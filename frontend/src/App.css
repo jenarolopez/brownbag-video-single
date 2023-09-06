@@ -1,0 +1,24 @@
+
+
+
+
+.video-container {
+  flex-grow: 1;
+  margin: 10px 10px;
+}
+
+.video-call {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.caller-container {
+  grid-column: span 2 / span 2;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
