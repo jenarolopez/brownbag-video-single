@@ -15,38 +15,12 @@ const io = socket(server, {
   }
 });
 
-const users = {}
-const socketToRoom = {}
 
 io.on('connection', socket => {
 
   socket.emit("me", socket.id);
 
-  socket.on('call user', payload => {
-    const { receiverId, roomId, signal} = payload
-    users[payload.roomId] = [socket.id]
-    socketToRoom[socket.id] = payload.roomId;
-    io.to(receiverId).emit('calling', { roomId: roomId, senderId: socket.id, signal })
-  })
-
-  socket.on('call answered', (payload)=> {
-    users[payload.roomId].push(socket.id);
-    socketToRoom[socket.id] = payload.roomId;
-    console.log(users[payload.roomId])
-    io.to(payload.receiverId).emit('call connected', payload )
-  })
-
-  socket.on('disconnect', () => {
-    const roomId = socketToRoom[socket.id];
-    let room = users[roomId]
-    if(room) {
-      room.forEach(id => {
-        if(id != socket.id) {
-          io.to(id).emit('disconnected user', { socketId: socket.id })
-        }
-      });
-    }
-  })
+  
   
 
 })
