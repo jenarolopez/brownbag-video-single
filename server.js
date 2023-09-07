@@ -15,8 +15,6 @@ const io = socket(server, {
   }
 });
 
-const users = {}
-const socketToRoom = {}
 
 io.on('connection', socket => {
 
