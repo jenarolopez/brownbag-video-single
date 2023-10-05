@@ -12,7 +12,7 @@
   grid-template-columns: 1fr 1fr;
 }
 
-.caller-container {
+.span-2 {
   grid-column: span 2 / span 2;
   display: flex;
   flex-direction: column;
